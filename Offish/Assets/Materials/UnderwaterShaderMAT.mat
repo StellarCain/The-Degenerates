@@ -79,6 +79,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DepthCol: {r: 0, g: 0.7176471, b: 0.77254903, a: 1}
-    - _DepthColor: {r: 0.26037735, g: 0.6509434, b: 0.63302755, a: 1}
+    - _DepthColor: {r: 0.040174417, g: 0.5754717, b: 0.5487069, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
