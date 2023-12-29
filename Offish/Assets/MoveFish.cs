@@ -7,6 +7,7 @@ public class MoveFish : MonoBehaviour
     //speed at which we are to be traveling
     public float maxSpeed = 5f;
     public float acceleration = .1f;
+    public float decceleration = .05f;
 
     //place where we are to be going
     private Vector3 plc;
@@ -30,16 +31,14 @@ public class MoveFish : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
+        Vector3 mouseClickPosition = Input.mousePosition;
+        mouseClickPosition.z = Mathf.Abs(transform.position.z - Camera.main.transform.position.z);
+
+        plc = Camera.main.ScreenToWorldPoint(mouseClickPosition);
+        plc.z = transform.position.z;
+
+        if (Input.GetMouseButton(0) && Vector3.Distance(transform.position, plc) > 2f)
         {
-            Vector3 mouseClickPosition = Input.mousePosition;
-            mouseClickPosition.z = Mathf.Abs(transform.position.z - Camera.main.transform.position.z);
-
-            plc = Camera.main.ScreenToWorldPoint(mouseClickPosition);
-            plc.z = transform.position.z;
-
-            print("pos: " + plc);
-
             Vector3 direction = plc - transform.position;
             Quaternion rot = Quaternion.LookRotation(direction);
             transform.rotation = rot;
@@ -48,7 +47,7 @@ public class MoveFish : MonoBehaviour
         }
         else
         {
-            speed -= acceleration;
+            speed -= decceleration;
         }
 
         speed = Mathf.Clamp(speed, 0, maxSpeed);
