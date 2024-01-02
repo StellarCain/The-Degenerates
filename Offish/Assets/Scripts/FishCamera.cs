@@ -24,7 +24,7 @@ public class FishCamera : MonoBehaviour
         MoveFish fishScript = fish.GetComponent<MoveFish>();
         // Adding the normalized speed to the z axis of the camera (to acheive a speed effect)
         float zPos = zOriginal - fishScript.GetSpeed() / fishScript.maxSpeed * zMagnitude;
-        Vector3 targetPosition = new Vector3(fish.position.x + 20, fish.position.y + 10, zPos);
+        Vector3 targetPosition = new Vector3(fish.position.x, fish.position.y, zPos);
         // Interpolating the camera
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
 

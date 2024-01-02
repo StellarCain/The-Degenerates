@@ -42,22 +42,26 @@ public class MoveFish : MonoBehaviour
         // Lerping the position of the mouse for an interesting smooth movement
         plc = Vector3.Lerp(plc, mouseWorldPosition, mouseLerpSpeed * Time.deltaTime);
 
+        // PARTICLE SYSTEM STUFF
         RaycastHit hitInfo;
         // Casting a ray down from the fish's position to hit the sand floor and put the particle system there
         if (Physics.Raycast(transform.position + transform.forward, Vector3.down, out hitInfo, 500))
         {
-            sandDisplacementParticleSystem.transform.position = hitInfo.point;
-            sandDisplacementParticleSystem.transform.forward = hitInfo.normal;
-
-            var emission = sandDisplacementParticleSystem.emission;
-
-            if (Vector3.Distance(hitInfo.point, transform.position) > 10f)
+            if (hitInfo.collider.CompareTag("Seabed"))
             {
-                emission.rateOverDistance = 0;
-            }
-            else
-            {
-                emission.rateOverDistance = speed / maxSpeed;
+                sandDisplacementParticleSystem.transform.position = hitInfo.point;
+                sandDisplacementParticleSystem.transform.forward = hitInfo.normal;
+
+                var emission = sandDisplacementParticleSystem.emission;
+
+                if (Vector3.Distance(hitInfo.point, transform.position) > 10f)
+                {
+                    emission.rateOverDistance = 0;
+                }
+                else
+                {
+                    emission.rateOverDistance = speed / maxSpeed;
+                }
             }
         }
     }
