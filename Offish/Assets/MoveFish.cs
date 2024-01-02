@@ -7,7 +7,10 @@ public class MoveFish : MonoBehaviour
     //speed at which we are to be traveling
     public float maxSpeed = 5f;
     public float acceleration = .1f;
+    public float velocityLerpSpeed = 3f;
     public float decceleration = .05f;
+    public float mouseLerpSpeed = 5f;
+    public ParticleSystem sandDisplacementParticleSystem;
 
     //place where we are to be going
     private Vector3 plc;
@@ -28,15 +31,40 @@ public class MoveFish : MonoBehaviour
         return speed;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
         Vector3 mouseClickPosition = Input.mousePosition;
         mouseClickPosition.z = Mathf.Abs(transform.position.z - Camera.main.transform.position.z);
 
-        plc = Camera.main.ScreenToWorldPoint(mouseClickPosition);
-        plc.z = transform.position.z;
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseClickPosition);
+        mouseWorldPosition.z = transform.position.z;
 
+        // Lerping the position of the mouse for an interesting smooth movement
+        plc = Vector3.Lerp(plc, mouseWorldPosition, mouseLerpSpeed * Time.deltaTime);
+
+        RaycastHit hitInfo;
+        // Casting a ray down from the fish's position to hit the sand floor and put the particle system there
+        if (Physics.Raycast(transform.position + transform.forward, Vector3.down, out hitInfo, 500))
+        {
+            sandDisplacementParticleSystem.transform.position = hitInfo.point;
+            sandDisplacementParticleSystem.transform.forward = hitInfo.normal;
+
+            var emission = sandDisplacementParticleSystem.emission;
+
+            if (Vector3.Distance(hitInfo.point, transform.position) > 10f)
+            {
+                emission.rateOverDistance = 0;
+            }
+            else
+            {
+                emission.rateOverDistance = speed / maxSpeed;
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         if (Input.GetMouseButton(0) && Vector3.Distance(transform.position, plc) > 2f)
         {
             Vector3 direction = plc - transform.position;
@@ -53,6 +81,6 @@ public class MoveFish : MonoBehaviour
         speed = Mathf.Clamp(speed, 0, maxSpeed);
 
         // we ball
-        rb.velocity = transform.forward * speed;
+        rb.velocity = Vector3.Lerp(rb.velocity, transform.forward * speed, velocityLerpSpeed * Time.deltaTime);
     }
 }
