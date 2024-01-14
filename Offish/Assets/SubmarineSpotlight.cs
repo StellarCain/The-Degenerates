@@ -11,7 +11,7 @@ public class SubmarineSpotlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < detectionRange)
+        if (Vector3.Distance(player.transform.position, transform.position) < detectionRange && player.position.x > transform.position.x)
         {
             Vector3 direction = player.position - transform.position;
             Quaternion lookRotaton = Quaternion.LookRotation(direction);
