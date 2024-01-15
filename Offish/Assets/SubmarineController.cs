@@ -9,6 +9,6 @@ public class SubmarineController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * .175f;
+        transform.position += transform.forward * .1f;
     }
 }
