@@ -10309,7 +10309,7 @@ MonoBehaviour:
   renderWireFrame: 0
   lightType: 0
   lightMultiplier: 6.8
-  spotExponent: 162.62
+  spotExponent: 180
   constantAttenuation: 0
   linearAttenuation: 48.19
   quadraticAttenuation: 100
@@ -10573,8 +10573,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 786415111}
+<<<<<<< Updated upstream
   speed: 5
   detectionRange: 300
+=======
+  speed: 4
+>>>>>>> Stashed changes
 --- !u!1 &598017778
 GameObject:
   m_ObjectHideFlags: 0
@@ -11216,7 +11220,7 @@ MonoBehaviour:
   renderWireFrame: 0
   lightType: 0
   lightMultiplier: 6.8
-  spotExponent: 162.62
+  spotExponent: 180
   constantAttenuation: 0
   linearAttenuation: 48.19
   quadraticAttenuation: 100
@@ -11418,8 +11422,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 786415111}
+<<<<<<< Updated upstream
   speed: 5
   detectionRange: 300
+=======
+  speed: 4
+>>>>>>> Stashed changes
 --- !u!1 &925354240
 GameObject:
   m_ObjectHideFlags: 0
