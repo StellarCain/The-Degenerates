@@ -11,12 +11,18 @@ public class MoveFish : MonoBehaviour
     public float decceleration = .05f;
     public float mouseLerpSpeed = 5f;
     public ParticleSystem sandDisplacementParticleSystem;
+    public ParticleSystem startAbilityParticleSystem;
+    public List<string> companions = new List<string>();
 
     //place where we are to be going
     private Vector3 plc;
     private Rigidbody rb;
 
+    // Abilities
+    private int currentCompanion = 0;
+    private bool usingAbility = false;
     private float speed = 0f;
+    private FishCamera fishCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +30,19 @@ public class MoveFish : MonoBehaviour
         //we start where we are
         plc = transform.position;
         rb = transform.GetComponent<Rigidbody>();
+        fishCamera = Camera.main.GetComponent<FishCamera>();
     }
 
     public float GetSpeed()
     {
         return speed;
+    }
+
+    private Quaternion FaceTowards(Vector3 target)
+    {
+        Vector3 direction = target - transform.position;
+        Quaternion rot = Quaternion.LookRotation(direction);
+        return rot;
     }
 
     private void Update()
@@ -64,16 +78,25 @@ public class MoveFish : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && !usingAbility)
+        {
+            UseAbility(companions[currentCompanion]);
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (usingAbility) return;
+        Move();
+    }
+
+    private void Move()
+    {
         if (Input.GetMouseButton(0) && Vector3.Distance(transform.position, plc) > 2f)
         {
-            Vector3 direction = plc - transform.position;
-            Quaternion rot = Quaternion.LookRotation(direction);
-            transform.rotation = rot;
+            transform.rotation = FaceTowards(plc);
 
             speed += acceleration;
         }
@@ -86,5 +109,39 @@ public class MoveFish : MonoBehaviour
 
         // we ball
         rb.velocity = Vector3.Lerp(rb.velocity, transform.forward * speed, velocityLerpSpeed * Time.deltaTime);
+    }
+
+    private void UseAbility(string ability)
+    {
+        startAbilityParticleSystem.Emit(35);
+        // Burying
+        if (ability == "Flounder")
+        {
+            StartCoroutine(UseFlounder());
+        }
+    }
+
+    // FLOUNDER ABILITY SLAAY
+    private IEnumerator UseFlounder()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, Vector3.down + Vector3.right, out hitInfo, 20))
+        {
+            usingAbility = true;
+            rb.velocity = Vector3.zero;
+
+            rb.isKinematic = true;
+            Vector3 targetPosition = hitInfo.point - Vector3.up * 5f;
+
+            transform.rotation = FaceTowards(targetPosition);
+            yield return new WaitForSeconds(1f);
+
+            fishCamera.ChangeCameraMode("flounder");
+            for (float i = 0; i <= 1; i += Time.deltaTime)
+            {
+                yield return new WaitForEndOfFrame();
+                transform.position = Vector3.Lerp(transform.position, targetPosition, i);
+            }
+        }
     }
 }
