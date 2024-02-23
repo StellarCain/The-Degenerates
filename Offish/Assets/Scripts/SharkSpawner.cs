@@ -7,7 +7,7 @@ public class SharkSpawner : MonoBehaviour
     [SerializeField]
     public float frames;
     public float detectionRange = 100;
-    public Vector3 targetSize;
+    public float targetStrength;
     public GameObject shark;
     private Transform player;
     private bool started = false;
@@ -33,10 +33,10 @@ public class SharkSpawner : MonoBehaviour
         for (float i = 0; i <= 1; i += (1 / frames))
         {
             yield return new WaitForEndOfFrame();
-            transform.localScale = Vector3.Lerp(transform.localScale, targetSize, i * Time.deltaTime);
+            transform.GetComponent<VLight>().lightMultiplier = Mathf.Lerp(transform.GetComponent<VLight>().lightMultiplier, targetStrength, i * Time.deltaTime);
         }
 
-        Instantiate(shark, transform.position, Quaternion.identity);
+        Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0));
         Destroy(transform.gameObject);
     }
 }

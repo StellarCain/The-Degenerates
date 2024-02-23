@@ -8,6 +8,7 @@ public class FishHealth : MonoBehaviour
     public bool losingHealth = false;
     public float maxSpeedInDecay = 20;
     public ParticleSystem decayParticleSystem;
+    public bool isHiding = false;
 
     private float maxSpeed = 0;
 

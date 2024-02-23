@@ -16,9 +16,12 @@ public class SharkBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = lookRotation;
+        if (!target.GetComponent<FishHealth>().isHiding)
+        {
+            Vector3 direction = target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = lookRotation;
+        }
 
         transform.position += transform.forward * speed * Time.deltaTime;
     }
