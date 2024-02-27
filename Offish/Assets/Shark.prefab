@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 571645369}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1864582418228071327}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96b4d5804a3d52442b96ab30f39530b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ad4e85975e2e0f428e2bcf4b3488159, type: 3}
   m_Color: {r: 0.59278214, g: 0.603029, b: 0.7264151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4907,6 +4907,7 @@ GameObject:
   - component: {fileID: 1864582418228071327}
   - component: {fileID: 1864582418228071314}
   - component: {fileID: 1864582418228071326}
+  - component: {fileID: 255360125}
   m_Layer: 0
   m_Name: Shark
   m_TagString: Untagged
@@ -4923,7 +4924,7 @@ Transform:
   m_GameObject: {fileID: 1864582418228071315}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 547.69, y: 72.11, z: -148.86}
-  m_LocalScale: {x: 4.4908586, y: 4.4908586, z: 4.4908586}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 571645370}
@@ -4957,3 +4958,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 90
+--- !u!54 &255360125
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864582418228071315}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 0
+  m_CollisionDetection: 0
