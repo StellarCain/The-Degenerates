@@ -12,15 +12,12 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, life);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collider.transform.CompareTag("Enemy"))
+        {
+            Destroy(collider.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

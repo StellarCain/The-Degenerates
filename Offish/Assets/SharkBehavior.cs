@@ -50,7 +50,7 @@ public class SharkBehavior : MonoBehaviour
             }
 
             // Interpolating the shark speed to match the target velocity
-            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 3 * Time.deltaTime);
+            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 3 * Time.fixedDeltaTime);
         }
     }
 
