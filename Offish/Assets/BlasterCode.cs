@@ -8,6 +8,7 @@ public class BlasterCode : MonoBehaviour
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
     public float bulletSpeed = 10;
+    public ParticleSystem muzzleFlash;
 
     // Update is called once per frame
     void Update()
@@ -20,7 +21,8 @@ public class BlasterCode : MonoBehaviour
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             Vector3 direction = (mousePosition - bullet.transform.position).normalized;
             bullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+            bullet.transform.forward = direction;
+            muzzleFlash.Emit(30);
         }
-
     }
 }
