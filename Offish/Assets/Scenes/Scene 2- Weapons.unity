@@ -27934,7 +27934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawnPoint: {fileID: 456533729}
   bulletPrefab: {fileID: 1083559622562677374, guid: c1142aee2a823914f934be4fd238ee56, type: 3}
-  bulletSpeed: 70
+  bulletSpeed: 120
   muzzleFlash: {fileID: 1680579566}
 --- !u!212 &2109146500
 SpriteRenderer:
