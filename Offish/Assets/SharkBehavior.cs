@@ -22,22 +22,23 @@ public class SharkBehavior : MonoBehaviour
     {
         if (!returning)
         {
+            Vector3 direction = target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = lookRotation;
+
             Vector3 targetVelocity = Vector3.zero;
 
             if (!target.GetComponent<FishHealth>().isHiding || (target.GetComponent<FishHealth>().isHiding && Vector3.Distance(transform.position, target.position) < 10)) // Last constant is the distance at which the shark will keep following the player if they hide
             {
-                Vector3 direction = target.position - transform.position;
-                Quaternion lookRotation = Quaternion.LookRotation(direction);
-                transform.rotation = lookRotation;
 
                 targetVelocity = transform.forward * speed;
                 hidingTimer = 0;
             }
-            else if (target.GetComponent<FishHealth>().isHiding && Vector3.Distance(transform.position, target.position) > 60) // Stopping range
+            else if (target.GetComponent<FishHealth>().isHiding && Vector3.Distance(transform.position, target.position) > 50) // Stopping range
             {
                 targetVelocity = transform.forward * speed;
             }
-            else if (target.GetComponent<FishHealth>().isHiding && Vector3.Distance(transform.position, target.position) < 61) // Turning back range
+            else if (target.GetComponent<FishHealth>().isHiding && Vector3.Distance(transform.position, target.position) < 51) // Turning back range
             {
                 targetVelocity = Vector3.zero;
                 hidingTimer += Time.deltaTime;
