@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SharkBehavior : MonoBehaviour
@@ -68,7 +69,14 @@ public class SharkBehavior : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             transform.position += transform.forward / 2f;
-        }   
+        }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            collision.transform.GetComponent<FishHealth>().Kill();
+        }
+    }
 }

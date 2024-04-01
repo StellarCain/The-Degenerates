@@ -11,6 +11,7 @@ public class SubmarineSpotlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Vector3.Distance(player.transform.position, transform.position) < detectionRange)
         {
             Vector3 direction = player.position - transform.position;
@@ -25,5 +26,6 @@ public class SubmarineSpotlight : MonoBehaviour
             player.GetComponent<FishHealth>().losingHealth = false;
             transform.parent.parent.GetComponent<SubmarineController>().speed = .1f;
         }
+        */
     }
 }

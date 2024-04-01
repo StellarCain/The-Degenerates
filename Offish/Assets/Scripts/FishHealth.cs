@@ -1,38 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
-
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 public class FishHealth : MonoBehaviour
 {
-    private float health = 100;
-    public bool losingHealth = false;
-    public float maxSpeedInDecay = 20;
-    public ParticleSystem decayParticleSystem;
-    public bool isHiding = false;
-
-    private float maxSpeed = 0;
+    // Post processing
+    public PostProcessVolume _postProcessVolume;
+    private ColorGrading _cg;
+    public bool isHiding;
+    private bool dying;
 
     private void Start()
     {
-        maxSpeed = transform.GetComponent<MoveFish>().maxSpeed;
+        _postProcessVolume.profile.TryGetSettings(out _cg);
+        print(_cg.gamma.value);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Kill()
     {
-        var emission = decayParticleSystem.emission;
+        if (!dying)
+            StartCoroutine(ExecuteDeath());
+    }
 
-        if (losingHealth)
+    private IEnumerator ExecuteDeath()
+    {
+        dying = true;
+        // IF YOU SET MAX SPEED TO ZERO THE CAMERA WILL FREAK OUT
+        transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        transform.GetComponent<MoveFish>().acceleration = .001f;
+        Vector4 originalGammaVal = _cg.gamma.value;
+        _cg.gamma.Override(new Vector4(3f, 3f, 3f, 3f));
+        Vector4 gammaVal = _cg.gamma.value;
+
+        for (float i = 0; i < .12f; i += Time.deltaTime * .1f)
         {
-            transform.GetComponent<MoveFish>().maxSpeed =
-                Mathf.Lerp(transform.GetComponent<MoveFish>().maxSpeed, maxSpeedInDecay, 5 * Time.deltaTime);
-            emission.enabled = true;
+            yield return new WaitForEndOfFrame();
+            gammaVal = Vector4.Lerp(gammaVal, new Vector4(2f, 0f, 0f, -3f), i);
+            _cg.gamma.Override(gammaVal);
+            print(i);
         }
-        else
-        {
-            transform.GetComponent<MoveFish>().maxSpeed =
-                Mathf.Lerp(transform.GetComponent<MoveFish>().maxSpeed, maxSpeed, 5 * Time.deltaTime);
-            emission.enabled = false;
-        }
+
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+        //_cg.gamma.Override(originalGammaVal);
     }
 }
