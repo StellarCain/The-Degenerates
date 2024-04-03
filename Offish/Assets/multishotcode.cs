@@ -19,44 +19,52 @@ public class multishotcode : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+
+            /*
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = bulletSpawnPoint.position.z - Camera.main.transform.position.z;
             Vector3 direction = (mousePosition - bullet.transform.position).normalized;
 
-            bullet.GetComponent<Rigidbody>().velocity = direction.normalized * bulletSpeed;
+            */
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * bulletSpeed;
 
             muzzleFlash.Emit(30);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             var bullet = Instantiate(bulletPrefab, bulletSpawnPointA.position, bulletSpawnPointA.rotation);
+            /*
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = bulletSpawnPointA.position.z - Camera.main.transform.position.z;
             Vector3 direction = (mousePosition - bullet.transform.position).normalized;
-
-            bullet.GetComponent<Rigidbody>().velocity = direction.normalized * bulletSpeed;
+            */
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * bulletSpeed;
 
             muzzleFlash.Emit(30);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPointB.position, bulletSpawnPointB.rotation);
+            /*
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = bulletSpawnPointB.position.z - Camera.main.transform.position.z;
             Vector3 direction = (mousePosition - bullet.transform.position).normalized;
-
-            bullet.GetComponent<Rigidbody>().velocity = direction.normalized * bulletSpeed;
+            */
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * bulletSpeed;
 
             muzzleFlash.Emit(30);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPointC.position, bulletSpawnPointC.rotation);
+            /*
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = bulletSpawnPointC.position.z - Camera.main.transform.position.z;
             Vector3 direction = (mousePosition - bullet.transform.position).normalized;
+            */
 
-            bullet.GetComponent<Rigidbody>().velocity = direction.normalized * bulletSpeed;
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * bulletSpeed;
 
             muzzleFlash.Emit(30);
         }
