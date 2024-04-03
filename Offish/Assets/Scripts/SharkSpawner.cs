@@ -8,6 +8,8 @@ public class SharkSpawner : MonoBehaviour
     public float frames;
     public float detectionRange = 100;
     public float targetStrength = 5f;
+    public float delay = 0f;
+    public float sharkSpeed = 150f;
     public GameObject shark;
     private Transform player;
     private bool started = false;
@@ -20,7 +22,7 @@ public class SharkSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(player.position, transform.position) < detectionRange && !started)
+        if (Vector3.Distance(player.position, new Vector3(transform.position.x, transform.position.y, player.position.z)) < detectionRange && !started)
         {
             StartCoroutine(Behavior());
         }
@@ -30,6 +32,7 @@ public class SharkSpawner : MonoBehaviour
     private IEnumerator Behavior()
     {
         started = true;
+        yield return new WaitForSeconds(delay);
         for (float i = 0; i <= 1; i += (1 / frames))
         {
             yield return new WaitForEndOfFrame();
@@ -37,12 +40,15 @@ public class SharkSpawner : MonoBehaviour
 
             if (Vector3.Distance(player.position, transform.position) > detectionRange / 1.4f && i >= .5f)
             {
-                Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0), transform);
+                GameObject sharkInstance = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z + 20), Quaternion.Euler(0, -90, 0), transform);
+                sharkInstance.GetComponent<SharkBehavior>().speed = sharkSpeed;
                 yield break;
             }
         }
 
-        Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0), transform);
+        GameObject sharke = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0), transform);
+        sharke.GetComponent<SharkBehavior>().speed = sharkSpeed;
+        print(sharke.GetComponent<SharkBehavior>().speed);
     }
 
     public IEnumerator DestroySelf()
