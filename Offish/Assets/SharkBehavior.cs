@@ -63,6 +63,7 @@ public class SharkBehavior : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = lookRotation;
 
+        transform.GetComponent<AudioSource>().Play();
         StartCoroutine(transform.parent.GetComponent<SharkSpawner>().DestroySelf());
 
         for (float i = 0; i <= 1; i += (1f / 1500f))

@@ -53,7 +53,7 @@ public class SharkSpawner : MonoBehaviour
 
     public IEnumerator DestroySelf()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         for (float i = 0; i <= 1; i += .01f)
         {
@@ -61,6 +61,7 @@ public class SharkSpawner : MonoBehaviour
             transform.GetComponent<VLight>().lightMultiplier = Mathf.Lerp(targetStrength, 0, i);
         }
 
+        yield return new WaitForSeconds(2f);
         Destroy(transform.gameObject);
     }
 }
