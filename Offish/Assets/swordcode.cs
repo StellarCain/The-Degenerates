@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour
+public class swordcode : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,13 +14,5 @@ public class Sword : MonoBehaviour
     void Update()
     {
         
-    }
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.transform.CompareTag("Enemy"))
-        {
-            Destroy(collider.gameObject);
-            Destroy(gameObject);
-        }
     }
 }
