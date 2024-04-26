@@ -15,7 +15,6 @@ public class FishHealth : MonoBehaviour
     private void Start()
     {
         _postProcessVolume.profile.TryGetSettings(out _cg);
-        print(_cg.gamma.value);
     }
 
     public void Kill()
@@ -45,5 +44,22 @@ public class FishHealth : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
         //_cg.gamma.Override(originalGammaVal);
+    }
+
+    public void ChangeTemperature(float newTemp)
+    {
+        //StartCoroutine(ExecuteChangeTemperature(newTemp));
+        _cg.temperature.Override(-44f);
+    }
+
+    public IEnumerator ExecuteChangeTemperature(float newTemp)
+    {
+        float originalTemp = _cg.temperature.value;
+        print(originalTemp);
+        for (float i = 0; i < 1; i += Time.deltaTime * .1f)
+        {
+            yield return new WaitForEndOfFrame();
+            _cg.temperature.Override(Mathf.Lerp(originalTemp, newTemp, i));
+        }
     }
 }
