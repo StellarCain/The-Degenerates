@@ -8,7 +8,7 @@ public class FishCamera : MonoBehaviour
     public float smoothSpeed = 5f;
     public float rotationSpeed = 4f;
     public float zMagnitude = 1f;
-    private float zOriginal;
+    public float zOriginal;
 
     public Transform pos1;
     public Transform pos2;

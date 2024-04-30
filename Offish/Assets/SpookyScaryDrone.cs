@@ -21,9 +21,8 @@ public class SpookyScaryDrone : MonoBehaviour
         transform.position = 
             Vector3.Lerp(transform.position, 
             new Vector3(player.position.x + 30, transform.position.y, 
-            transform.position.z), .2f * Time.deltaTime);
+            transform.position.z), 3f * Time.deltaTime);
         */
-
         // casting a ray towards the player
         RaycastHit hit;
         if (Physics.Raycast(new Vector3(player.position.x, player.position.y, transform.position.z), -Vector3.forward, out hit, 1000))
@@ -32,13 +31,13 @@ public class SpookyScaryDrone : MonoBehaviour
             {
                 Vector3 direction = player.position - transform.position;
                 Quaternion lookRotaton = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotaton, 1f * Time.deltaTime);
-                damageTimer += Time.deltaTime;
+                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotaton, 10f * Time.deltaTime);
+                //damageTimer += Time.deltaTime;
             }
             else
             {
                 damageTimer = 0;
-                transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, 1f * Time.deltaTime);               
+                transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, 10f * Time.deltaTime);               
             }
 
             if (damageTimer > 1f)
