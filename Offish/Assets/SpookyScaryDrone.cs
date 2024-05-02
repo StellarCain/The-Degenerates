@@ -32,7 +32,7 @@ public class SpookyScaryDrone : MonoBehaviour
                 Vector3 direction = player.position - transform.position;
                 Quaternion lookRotaton = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotaton, 10f * Time.deltaTime);
-                //damageTimer += Time.deltaTime;
+                damageTimer += Time.deltaTime;
             }
             else
             {

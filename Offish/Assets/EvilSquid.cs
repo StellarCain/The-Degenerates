@@ -17,9 +17,9 @@ public class EvilSquid : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2f);
-            transform.rotation = Quaternion.LookRotation(transform.position - player.position);
-            rb.AddForce(transform.forward * 10f, ForceMode.Impulse);
+            yield return new WaitForSeconds(3f);
+            transform.rotation = Quaternion.LookRotation(player.position - transform.position);
+            rb.AddForce(transform.forward * 200f, ForceMode.Impulse);
         }
     }
 }

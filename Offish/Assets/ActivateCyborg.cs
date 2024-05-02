@@ -14,6 +14,7 @@ public class ActivateCyborg : MonoBehaviour
             foreach (GameObject go in spotlights)
             {
                 go.GetComponent<SpookyScaryDrone>().enabled = false;
+                go.transform.GetChild(0).gameObject.SetActive(false);
             }
 
             cyborg.GetComponent<Cyborg>().enabled = true;
