@@ -11642,6 +11642,7 @@ MonoBehaviour:
   text: {fileID: 0}
   timeBetweenChar: 0.05
   timeBetweenLine: 2
+  messages: []
 --- !u!4 &1921975725
 Transform:
   m_ObjectHideFlags: 0

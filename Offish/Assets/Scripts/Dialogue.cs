@@ -8,13 +8,16 @@ public class Dialogue : MonoBehaviour
     public TMP_Text text;
     public float timeBetweenChar = .01f;
     public float timeBetweenLine = 1f;
+    public List<string> messages = new List<string>();
     private List<string> messageQueue = new List<string>();
     private bool isRenderingMessages = false;
 
     public void Start()
     {
-        QueueMessage("Shoot its 8:25 im gonna miss work");
-        QueueMessage("FUCK FUCK FUCK FUCK FUCK FUCK FUCK");
+        foreach (string m in messages)
+        {
+            QueueMessage(m);
+        }
     }
 
     public void QueueMessage(string message)

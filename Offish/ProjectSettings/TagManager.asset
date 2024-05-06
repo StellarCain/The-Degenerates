@@ -7,6 +7,7 @@ TagManager:
   - Seabed
   - HidingSpot
   - Enemy
+  - Barrel
   layers:
   - Default
   - TransparentFX

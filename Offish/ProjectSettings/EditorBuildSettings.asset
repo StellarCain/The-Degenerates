@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Boss Battle.unity
     guid: e53a0a14e19340b4886a378c04695da2
   - enabled: 1
-    path: Assets/Scenes/Scene 1.unity
+    path: Assets/Scenes/Scene1.unity
     guid: a90315f2caf3505449eed0ad8aa112a6
+  - enabled: 1
+    path: Assets/Scenes/Menu-Scene1.unity
+    guid: e0836d491af89bd48be4fe4242c9a7a2
   m_configObjects: {}
