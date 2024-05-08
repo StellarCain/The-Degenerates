@@ -11,6 +11,7 @@ public class SharkSpawner : MonoBehaviour
     public float delay = 0f;
     public float sharkSpeed = 150f;
     public GameObject shark;
+    public bool chase = false;
     private Transform player;
     private bool started = false;
 
@@ -48,6 +49,7 @@ public class SharkSpawner : MonoBehaviour
 
         GameObject sharke = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0), transform);
         sharke.GetComponent<SharkBehavior>().speed = sharkSpeed;
+        sharke.GetComponent<SharkBehavior>().chaseShark = chase;
         print(sharke.GetComponent<SharkBehavior>().speed);
     }
 

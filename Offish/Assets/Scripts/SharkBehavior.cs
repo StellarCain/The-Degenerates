@@ -6,6 +6,7 @@ using UnityEngine;
 public class SharkBehavior : MonoBehaviour
 {
     public float speed;
+    public bool chaseShark = false;
     private Transform target;
     private float hidingTimer;
     private Rigidbody rb;
@@ -23,6 +24,9 @@ public class SharkBehavior : MonoBehaviour
     {
         if (!returning)
         {
+            if (target.GetComponent<FishHealth>().isHiding)
+                hidingTimer += Time.deltaTime;
+
             Vector3 direction = target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = lookRotation;
@@ -42,10 +46,9 @@ public class SharkBehavior : MonoBehaviour
             else if (target.GetComponent<FishHealth>().isHiding && Vector3.Distance(transform.position, target.position) < 51) // Turning back range
             {
                 targetVelocity = Vector3.zero;
-                hidingTimer += Time.deltaTime;
             }
 
-            if (hidingTimer > 2)
+            if (hidingTimer > 2 && !chaseShark)
             {
                 returning = true;
                 StartCoroutine(EndBehavior());
@@ -75,7 +78,7 @@ public class SharkBehavior : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") && !collision.transform.GetComponent<FishHealth>().isHiding)
         {
             collision.transform.GetComponent<FishHealth>().Kill();
         }
