@@ -39,7 +39,7 @@ public class SharkSpawner : MonoBehaviour
             yield return new WaitForEndOfFrame();
             transform.GetComponent<VLight>().lightMultiplier = Mathf.Lerp(transform.GetComponent<VLight>().lightMultiplier, targetStrength, i * Time.deltaTime);
 
-            if (Vector3.Distance(player.position, transform.position) > detectionRange / 1.4f && i >= .5f)
+            if (Vector3.Distance(player.position, new Vector3(transform.position.x, transform.position.y, player.position.z)) > detectionRange * 1.5f)
             {
                 GameObject sharkInstance = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z + 20), Quaternion.Euler(0, -90, 0), transform);
                 sharkInstance.GetComponent<SharkBehavior>().speed = sharkSpeed;

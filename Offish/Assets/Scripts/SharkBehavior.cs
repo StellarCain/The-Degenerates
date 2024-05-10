@@ -33,9 +33,8 @@ public class SharkBehavior : MonoBehaviour
 
             Vector3 targetVelocity = Vector3.zero;
 
-            if (!target.GetComponent<FishHealth>().isHiding || (target.GetComponent<FishHealth>().isHiding && Vector3.Distance(transform.position, target.position) < 10)) // Last constant is the distance at which the shark will keep following the player if they hide
+            if (!target.GetComponent<FishHealth>().isHiding) // Last constant is the distance at which the shark will keep following the player if they hide
             {
-
                 targetVelocity = transform.forward * speed;
                 hidingTimer = 0;
             }
