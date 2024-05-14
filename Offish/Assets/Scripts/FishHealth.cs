@@ -10,11 +10,28 @@ public class FishHealth : MonoBehaviour
     public PostProcessVolume _postProcessVolume;
     private ColorGrading _cg;
     public bool isHiding;
+    public float health = 100;
     private bool dying;
+    private Vector4 originalGammaValue;
 
     private void Start()
     {
         _postProcessVolume.profile.TryGetSettings(out _cg);
+        originalGammaValue = _cg.gamma.value;
+    }
+
+    public void Damage(int damage)
+    {
+        health -= damage;
+        _cg.gamma.Override(new Vector4(originalGammaValue.x, originalGammaValue.y, originalGammaValue.z, originalGammaValue.w - (health / 100 * originalGammaValue.w)));
+    }
+
+    public void Update()
+    {
+        if (health <= 0)
+        {
+            Kill();
+        }
     }
 
     public void Kill()
@@ -29,7 +46,6 @@ public class FishHealth : MonoBehaviour
         // IF YOU SET MAX SPEED TO ZERO THE CAMERA WILL FREAK OUT
         transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         transform.GetComponent<MoveFish>().acceleration = .001f;
-        Vector4 originalGammaVal = _cg.gamma.value;
         _cg.gamma.Override(new Vector4(3f, 3f, 3f, 3f));
         Vector4 gammaVal = _cg.gamma.value;
 
@@ -38,7 +54,6 @@ public class FishHealth : MonoBehaviour
             yield return new WaitForEndOfFrame();
             gammaVal = Vector4.Lerp(gammaVal, new Vector4(2f, 0f, 0f, -3f), i);
             _cg.gamma.Override(gammaVal);
-            print(i);
         }
 
         yield return new WaitForSeconds(2f);

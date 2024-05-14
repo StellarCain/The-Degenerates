@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ActivateCyborg : MonoBehaviour
 {
-    public List<GameObject> spotlights;
+    public List<UnityEngine.GameObject> spotlights;
     public Transform cyborg;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            foreach (GameObject go in spotlights)
+            foreach (UnityEngine.GameObject go in spotlights)
             {
                 go.GetComponent<SpookyScaryDrone>().enabled = false;
                 go.transform.GetChild(0).gameObject.SetActive(false);

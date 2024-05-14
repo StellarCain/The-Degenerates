@@ -15,6 +15,6 @@ public class CyborgBullet : MonoBehaviour
     private IEnumerator Lifetime()
     {
         yield return new WaitForSeconds(life);
-        GameObject.Destroy(gameObject);
+        UnityEngine.GameObject.Destroy(gameObject);
     }
 }

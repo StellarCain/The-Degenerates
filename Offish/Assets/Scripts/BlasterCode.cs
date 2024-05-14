@@ -6,7 +6,7 @@ public class BlasterCode : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform bulletSpawnPoint;
-    public GameObject bulletPrefab;
+    public UnityEngine.GameObject bulletPrefab;
     public float bulletSpeed = 10;
     public ParticleSystem muzzleFlash;
 

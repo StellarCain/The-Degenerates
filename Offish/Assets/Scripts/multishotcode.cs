@@ -9,7 +9,7 @@ public class multishotcode : MonoBehaviour
     public Transform bulletSpawnPointA;
     public Transform bulletSpawnPointB;
     public Transform bulletSpawnPointC;
-    public GameObject bulletPrefab;
+    public UnityEngine.GameObject bulletPrefab;
     public float bulletSpeed = 400;
     public ParticleSystem muzzleFlash;
 

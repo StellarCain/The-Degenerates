@@ -40,7 +40,7 @@ public class SpookyScaryDrone : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, 10f * Time.deltaTime);               
             }
 
-            if (damageTimer > 1f)
+            if (damageTimer > .8f)
             {
                 player.GetComponent<FishHealth>().Kill();
             }

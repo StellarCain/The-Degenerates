@@ -25,10 +25,10 @@ public class VLightManager : MonoBehaviour
 		{
 			if(_instance == null)
 			{
-				_instance = GameObject.FindObjectOfType(typeof(VLightManager)) as VLightManager;
+                _instance = UnityEngine.GameObject.FindObjectOfType(typeof(VLightManager)) as VLightManager;
 				if(_instance == null)
 				{
-					GameObject goManager = new GameObject("Volume Light Manager");
+                    UnityEngine.GameObject goManager = new UnityEngine.GameObject("Volume Light Manager");
 					_instance = goManager.AddComponent<VLightManager>();
 				}
 			}
@@ -120,14 +120,14 @@ public class VLightManager : MonoBehaviour
 	private void Start()
 	{
 		_vLights.Clear();
-		VLight[] vLights = GameObject.FindObjectsOfType(typeof(VLight)) as VLight[];
+        VLight[] vLights = UnityEngine.GameObject.FindObjectsOfType(typeof(VLight)) as VLight[];
 		_vLights.AddRange(vLights);
 	}
 	
 	private void Enabled()
 	{
 		_vLights.Clear();
-		VLight[] vLights = GameObject.FindObjectsOfType(typeof(VLight)) as VLight[];
+        VLight[] vLights = UnityEngine.GameObject.FindObjectsOfType(typeof(VLight)) as VLight[];
 		_vLights.AddRange(vLights);
 	}
 }

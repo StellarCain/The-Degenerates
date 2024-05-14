@@ -10,7 +10,7 @@ public class SharkSpawner : MonoBehaviour
     public float targetStrength = 5f;
     public float delay = 0f;
     public float sharkSpeed = 150f;
-    public GameObject shark;
+    public UnityEngine.GameObject shark;
     public bool chase = false;
     private Transform player;
     private bool started = false;
@@ -18,7 +18,7 @@ public class SharkSpawner : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = UnityEngine.GameObject.FindWithTag("Player").transform;
     }
 
     private void Update()
@@ -41,16 +41,15 @@ public class SharkSpawner : MonoBehaviour
 
             if (Vector3.Distance(player.position, new Vector3(transform.position.x, transform.position.y, player.position.z)) > detectionRange * 1.5f)
             {
-                GameObject sharkInstance = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z + 20), Quaternion.Euler(0, -90, 0), transform);
+                UnityEngine.GameObject sharkInstance = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z + 20), Quaternion.Euler(0, -90, 0), transform);
                 sharkInstance.GetComponent<SharkBehavior>().speed = sharkSpeed;
                 yield break;
             }
         }
 
-        GameObject sharke = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0), transform);
+        UnityEngine.GameObject sharke = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0), transform);
         sharke.GetComponent<SharkBehavior>().speed = sharkSpeed;
         sharke.GetComponent<SharkBehavior>().chaseShark = chase;
-        print(sharke.GetComponent<SharkBehavior>().speed);
     }
 
     public IEnumerator DestroySelf()

@@ -39,7 +39,7 @@ public class VolumeLightCreator : EditorWindow
         if (ShowWarning())
         {
             var volumeLightContainer = CreateVolumeLight(VLight.LightTypes.Spot);
-            var pointLight = new GameObject("Spot light");
+            var pointLight = new UnityEngine.GameObject("Spot light");
             var light = pointLight.AddComponent<Light>();
             light.shadows = LightShadows.Soft;
             light.type = LightType.Spot;
@@ -72,7 +72,7 @@ public class VolumeLightCreator : EditorWindow
         if (ShowWarning())
         {
             var volumeLightContainer = CreateVolumeLight(VLight.LightTypes.Point);
-            var pointLight = new GameObject("Point light");
+            var pointLight = new UnityEngine.GameObject("Point light");
             var light = pointLight.AddComponent<Light>();
             light.shadows = LightShadows.Soft;
             light.type = LightType.Point;
@@ -101,8 +101,8 @@ public class VolumeLightCreator : EditorWindow
 
     private static VLight CreateVolumeLight(VLight.LightTypes type)
     {
-        var otherLights = GameObject.FindObjectsOfType(typeof(VLight)) as VLight[];
-        var volumeLightContainer = new GameObject("V-Light " + type + " " + otherLights.Length);
+        var otherLights = UnityEngine.GameObject.FindObjectsOfType(typeof(VLight)) as VLight[];
+        var volumeLightContainer = new UnityEngine.GameObject("V-Light " + type + " " + otherLights.Length);
         if (SceneView.lastActiveSceneView != null)
         {
             SceneView.lastActiveSceneView.MoveToView(volumeLightContainer.transform);

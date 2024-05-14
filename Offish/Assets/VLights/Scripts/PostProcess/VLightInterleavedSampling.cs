@@ -127,13 +127,13 @@ public class VLightInterleavedSampling : MonoBehaviour
         var planes = GeometryUtility.CalculateFrustumPlanes(cam);
         if (!Application.isPlaying)
         {
-            _vlights = GameObject.FindObjectsOfType<VLight>();
+            _vlights = UnityEngine.GameObject.FindObjectsOfType<VLight>();
         }
 
         if (lightsModified)
         {
             lightsModified = false;
-            _vlights = GameObject.FindObjectsOfType<VLight>();
+            _vlights = UnityEngine.GameObject.FindObjectsOfType<VLight>();
         }
 
         var bounds = new Bounds();
@@ -406,7 +406,7 @@ public class VLightInterleavedSampling : MonoBehaviour
             volumeLightShader = Shader.Find(VLightShaderUtil.INTERLEAVED_SHADER_NAME);
         }
 
-        _vlights = GameObject.FindObjectsOfType<VLight>();
+        _vlights = UnityEngine.GameObject.FindObjectsOfType<VLight>();
     }
 
     private void CleanUp()
@@ -438,7 +438,7 @@ public class VLightInterleavedSampling : MonoBehaviour
     {
         if (_ppCameraGO == null)
         {
-            var go = GameObject.Find("Post Processing Camera");
+            var go = UnityEngine.GameObject.Find("Post Processing Camera");
             if (go != null && go.GetComponent<Camera>() != null)
             {
                 _ppCameraGO = go.GetComponent<Camera>();
@@ -446,7 +446,7 @@ public class VLightInterleavedSampling : MonoBehaviour
             }
             else
             {
-                var newGO = new GameObject("Post Processing Camera");
+                var newGO = new UnityEngine.GameObject("Post Processing Camera");
                 _ppCameraGO = newGO.AddComponent<Camera>();
                 _ppCameraGO.useOcclusionCulling = false;
                 _ppCameraGO.enabled = false;

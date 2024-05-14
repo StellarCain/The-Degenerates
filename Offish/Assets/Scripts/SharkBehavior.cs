@@ -15,7 +15,7 @@ public class SharkBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindWithTag("Player").transform;
+        target = UnityEngine.GameObject.FindWithTag("Player").transform;
         rb = transform.GetComponent<Rigidbody>();
         //StartCoroutine(StartBehavior());
     }

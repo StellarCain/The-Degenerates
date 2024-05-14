@@ -6,9 +6,10 @@ using UnityEngine.Rendering.PostProcessing;
 public class Cyborg : MonoBehaviour
 {
     public Transform player;
-    public GameObject cyborgBullet;
+    public UnityEngine.GameObject cyborgBullet;
     public float cyborgBulletVelocity = 1f;
     public PostProcessVolume _postProcessVolume;
+    public List<Transform> evilSquids = new List<Transform>();
 
     private float shootRate = 3f;
     private ColorGrading _cg;
@@ -20,6 +21,11 @@ public class Cyborg : MonoBehaviour
         Camera.main.GetComponent<FishCamera>().zOriginal = -350.7f;
         StartCoroutine(ChangeTemperature());
         StartCoroutine(ShootRoutine());
+
+        foreach (Transform t in evilSquids)
+        {
+            t.gameObject.SetActive(true);
+        }
     }
 
     private IEnumerator ChangeTemperature()
@@ -45,7 +51,7 @@ public class Cyborg : MonoBehaviour
 
     private void ShootBullet()
     {
-        GameObject bullet = Instantiate(cyborgBullet, transform.position,
+        UnityEngine.GameObject bullet = Instantiate(cyborgBullet, transform.position,
             Quaternion.LookRotation(transform.position - (player.position + player.GetComponent<Rigidbody>().velocity / 2)));
         bullet.GetComponent<Rigidbody>().velocity = -bullet.transform.forward * cyborgBulletVelocity;
     }

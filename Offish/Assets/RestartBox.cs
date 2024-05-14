@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RestartBox : MonoBehaviour
 {
+    public int respawnNumber = 0;
     private RestartManager restartManager;
 
     // Start is called before the first frame update
@@ -16,8 +17,8 @@ public class RestartBox : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            restartManager.ChangeRespawn();
-            this.enabled = false;
+            restartManager.ChangeRespawn(respawnNumber);
+            enabled = false;
         }
     }
 }

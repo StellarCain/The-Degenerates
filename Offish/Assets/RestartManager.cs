@@ -18,9 +18,9 @@ public class RestartManager : MonoBehaviour
         Respawn();
     }
 
-    public void ChangeRespawn()
+    public void ChangeRespawn(int num)
     {
-        currentRespawnIndex++;
+        currentRespawnIndex = num;
         RestartCounter.SetRespawnIndex(currentRespawnIndex);
         print(currentRespawnIndex);
     }
