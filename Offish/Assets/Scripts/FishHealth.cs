@@ -13,6 +13,7 @@ public class FishHealth : MonoBehaviour
     public float health = 100;
     private bool dying;
     private Vector4 originalGammaValue;
+    private bool beingDamaged;
 
     private void Start()
     {
@@ -22,8 +23,23 @@ public class FishHealth : MonoBehaviour
 
     public void Damage(int damage)
     {
+        Vector4 currentGammaValue = _cg.gamma.value;
+        if (!beingDamaged && !dying)
+            StartCoroutine(ExecuteDamage(damage, currentGammaValue));
+    }
+
+    private IEnumerator ExecuteDamage(int damage, Vector4 currentGammaValue)
+    {
+        beingDamaged = true;
         health -= damage;
-        _cg.gamma.Override(new Vector4(originalGammaValue.x, originalGammaValue.y, originalGammaValue.z, originalGammaValue.w - (health / 100 * originalGammaValue.w)));
+        for (float i = 0; i <= .98f; i += Time.deltaTime * 2f)
+        {
+
+            yield return new WaitForEndOfFrame();
+            _cg.gamma.Override(Vector4.Lerp(new Vector4(2f, 0f, 0f, -3f), currentGammaValue, i));
+        }
+        _cg.gamma.Override(Vector4.Lerp(new Vector4(2f, 0f, 0f, -3f), currentGammaValue, .98f));
+        beingDamaged = false;
     }
 
     public void Update()
