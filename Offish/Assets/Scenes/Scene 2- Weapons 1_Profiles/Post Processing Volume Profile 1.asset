@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5487354566800754127
+--- !u!114 &-6054790267312587039
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,8 +9,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
-  m_Name: Vignette
+  m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  spectralLut:
+    overrideState: 1
+    value: {fileID: 0}
+    defaultState: 1
+  intensity:
+    overrideState: 1
+    value: 0.39
+  fastMode:
+    overrideState: 1
+    value: 0
+--- !u!114 &-798834237946002409
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
+  m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
   active: 1
   enabled:
@@ -18,32 +44,37 @@ MonoBehaviour:
     value: 1
   mode:
     overrideState: 1
-    value: 0
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 0.4
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
-  center:
-    overrideState: 1
-    value: {x: 0.5, y: 0.5}
-  intensity:
-    overrideState: 1
-    value: 0.43
-  smoothness:
-    overrideState: 1
-    value: 0.2
-  roundness:
+  ambientOnly:
     overrideState: 1
     value: 1
-  rounded:
+  noiseFilterTolerance:
     overrideState: 1
     value: 0
-  mask:
+  blurTolerance:
     overrideState: 1
-    value: {fileID: 0}
-    defaultState: 1
-  opacity:
+    value: -4.6
+  upsampleTolerance:
+    overrideState: 1
+    value: -12
+  thicknessModifier:
     overrideState: 1
     value: 1
+  directLightingStrength:
+    overrideState: 1
+    value: 0
+  radius:
+    overrideState: 1
+    value: 0.25
+  quality:
+    overrideState: 1
+    value: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,62 +85,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: Post Processing Volume Profile
+  m_Name: Post Processing Volume Profile 1
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 5775513960759755146}
-  - {fileID: 1466146576288316333}
-  - {fileID: 6705650105092079765}
-  - {fileID: 8918826102408094833}
-  - {fileID: -5487354566800754127}
---- !u!114 &1466146576288316333
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
-  m_Name: Bloom
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  intensity:
-    overrideState: 1
-    value: 0.25
-  threshold:
-    overrideState: 1
-    value: 0
-  softKnee:
-    overrideState: 1
-    value: 0.5
-  clamp:
-    overrideState: 1
-    value: 65472
-  diffusion:
-    overrideState: 1
-    value: 7
-  anamorphicRatio:
-    overrideState: 1
-    value: 0
-  color:
-    overrideState: 1
-    value: {r: 1, g: 1, b: 1, a: 1}
-  fastMode:
-    overrideState: 1
-    value: 0
-  dirtTexture:
-    overrideState: 1
-    value: {fileID: 0}
-    defaultState: 1
-  dirtIntensity:
-    overrideState: 1
-    value: 0
---- !u!114 &5775513960759755146
+  - {fileID: -6054790267312587039}
+  - {fileID: -798834237946002409}
+  - {fileID: 53182451234370267}
+  - {fileID: 1501416258212923786}
+--- !u!114 &53182451234370267
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +145,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 17
+    value: 14
   tint:
     overrideState: 1
     value: 0
@@ -171,10 +154,10 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 1
-    value: 2
+    value: 0
   saturation:
     overrideState: 1
-    value: 25
+    value: 23
   brightness:
     overrideState: 1
     value: 0
@@ -212,14 +195,14 @@ MonoBehaviour:
     overrideState: 1
     value: 100
   lift:
-    overrideState: 0
-    value: {x: 0.9396135, y: 0.97229356, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 1, y: 0.95326346, z: 0.9606341, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 0.20729524, y: 0.21197194, z: 1, w: -0.18319647}
+    value: {x: 0.8653657, y: 1, z: 0.8880539, w: -0.6090027}
   gain:
     overrideState: 1
-    value: {x: 0.94072443, y: 1, z: 0.626279, w: 0}
+    value: {x: 1, y: 0.8439156, z: 0.21440113, w: 1}
   masterCurve:
     overrideState: 1
     value:
@@ -1420,7 +1403,7 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
---- !u!114 &6705650105092079765
+--- !u!114 &1501416258212923786
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1429,69 +1412,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
-  m_Name: ChromaticAberration
+  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
+  m_Name: Bloom
   m_EditorClassIdentifier: 
   active: 1
   enabled:
     overrideState: 1
     value: 1
-  spectralLut:
-    overrideState: 1
-    value: {fileID: 0}
-    defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.784
+    value: 0.1
+  threshold:
+    overrideState: 1
+    value: 1
+  softKnee:
+    overrideState: 1
+    value: 0.5
+  clamp:
+    overrideState: 1
+    value: 65472
+  diffusion:
+    overrideState: 1
+    value: 7
+  anamorphicRatio:
+    overrideState: 1
+    value: 0
+  color:
+    overrideState: 1
+    value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
     overrideState: 1
     value: 0
---- !u!114 &8918826102408094833
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
-  m_Name: AmbientOcclusion
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
+  dirtTexture:
     overrideState: 1
-    value: 1
-  mode:
-    overrideState: 1
-    value: 1
-  intensity:
-    overrideState: 1
-    value: 1.09
-  color:
-    overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 1}
-  ambientOnly:
-    overrideState: 1
-    value: 1
-  noiseFilterTolerance:
+    value: {fileID: 0}
+    defaultState: 1
+  dirtIntensity:
     overrideState: 1
     value: 0
-  blurTolerance:
-    overrideState: 1
-    value: -4.6
-  upsampleTolerance:
-    overrideState: 1
-    value: -12
-  thicknessModifier:
-    overrideState: 1
-    value: 1.93
-  directLightingStrength:
-    overrideState: 1
-    value: 0
-  radius:
-    overrideState: 1
-    value: 0.25
-  quality:
-    overrideState: 1
-    value: 2
