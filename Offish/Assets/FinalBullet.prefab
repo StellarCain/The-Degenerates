@@ -94,11 +94,11 @@ GameObject:
   - component: {fileID: 5945508016957045397}
   - component: {fileID: 4388871292809537563}
   - component: {fileID: 6076982922199784974}
-  - component: {fileID: 4646429640292713863}
   - component: {fileID: 337772522}
   - component: {fileID: 337772521}
+  - component: {fileID: -553317566606529297}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: FinalBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,19 +149,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4646429640292713863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083559622562677374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a7527b8df2bb24c8c4b306dc7e03c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 3
 --- !u!198 &337772522
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -245,8 +232,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 1
+      scalar: 8
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4942,3 +4929,17 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-553317566606529297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083559622562677374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0748725b79f02a43b376c66e96abad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 3
+  explosionFX: {fileID: 3595433368838081422, guid: c38279a61dc86f546b09df45b0b95e45, type: 3}

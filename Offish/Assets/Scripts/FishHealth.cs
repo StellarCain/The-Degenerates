@@ -36,7 +36,7 @@ public class FishHealth : MonoBehaviour
         {
 
             yield return new WaitForEndOfFrame();
-            _cg.gamma.Override(Vector4.Lerp(new Vector4(2f, 0f, 0f, -3f), currentGammaValue, i));
+            _cg.gamma.Override(Vector4.Lerp(new Vector4(2f, 0f, 0f, -1f), currentGammaValue, i));
         }
         _cg.gamma.Override(Vector4.Lerp(new Vector4(2f, 0f, 0f, -3f), currentGammaValue, .98f));
         beingDamaged = false;

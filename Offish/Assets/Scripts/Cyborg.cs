@@ -45,7 +45,7 @@ public class Cyborg : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(shootRate);
-            ShootBullet();
+            //ShootBullet();
         }
     }
 

@@ -4946,6 +4946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 150
+  chaseShark: 0
 --- !u!54 &255360125
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4987,7 +4988,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c7117a7fcab8e364db34e5335516bd69, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.23
+  m_Volume: 0.093
   m_Pitch: 1
   Loop: 0
   Mute: 0
