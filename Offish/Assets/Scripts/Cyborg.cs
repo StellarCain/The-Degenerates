@@ -6,13 +6,21 @@ using UnityEngine.Rendering.PostProcessing;
 public class Cyborg : MonoBehaviour
 {
     public Transform player;
-    public UnityEngine.GameObject cyborgBullet;
+    public GameObject cyborgBullet;
     public float cyborgBulletVelocity = 1f;
     public PostProcessVolume _postProcessVolume;
     public List<Transform> evilSquids = new List<Transform>();
+    public List<Transform> jellyfish = new List<Transform>();
 
     private float shootRate = 3f;
     private ColorGrading _cg;
+    private int phase = 0;
+
+    //PHASE 1
+    private int downedSquid = 0;
+
+    //PHASE 2
+    private bool startedPhase = false;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -20,7 +28,6 @@ public class Cyborg : MonoBehaviour
         _postProcessVolume.profile.TryGetSettings(out _cg);
         Camera.main.GetComponent<FishCamera>().zOriginal = -350.7f;
         StartCoroutine(ChangeTemperature());
-        StartCoroutine(ShootRoutine());
 
         foreach (Transform t in evilSquids)
         {
@@ -40,41 +47,30 @@ public class Cyborg : MonoBehaviour
         }
     }
 
-    private IEnumerator ShootRoutine()
+    // PHASE 1
+    public void KilledSquid()
     {
-        while (true)
+        downedSquid++;
+
+        if (downedSquid == 4)
         {
-            yield return new WaitForSeconds(shootRate);
-            //ShootBullet();
+            phase++;
+            StartPhase1();
+
+            //making them slowly sink down
+            foreach (Transform t in evilSquids)
+            {
+                t.GetComponent<Rigidbody>().velocity = Vector3.down * 2f;
+            }
         }
     }
 
-    private void ShootBullet()
+    //SPAWN IN THA JELLYFISH
+    private void StartPhase1()
     {
-        UnityEngine.GameObject bullet = Instantiate(cyborgBullet, transform.position,
-            Quaternion.LookRotation(transform.position - (player.position + player.GetComponent<Rigidbody>().velocity / 2)));
-        bullet.GetComponent<Rigidbody>().velocity = -bullet.transform.forward * cyborgBulletVelocity;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position =
-            Vector3.Lerp(transform.position,
-            new Vector3(player.position.x, player.position.y,
-            transform.position.z), 2f * Time.deltaTime);
-
-        // casting a ray towards the player
-        RaycastHit hit;
-        if (Physics.Raycast(new Vector3(player.position.x, player.position.y, transform.position.z), -Vector3.forward, out hit, 1000))
+        foreach (Transform t in jellyfish)
         {
-            if (hit.transform.CompareTag("Player"))
-            {
-                Vector3 direction = player.position - transform.position;
-                Quaternion lookRotaton = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotaton, 10f * Time.deltaTime);
-                //damageTimer += Time.deltaTime;
-            }
+            t.gameObject.SetActive(true);
         }
     }
 }

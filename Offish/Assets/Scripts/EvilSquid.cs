@@ -7,6 +7,8 @@ public class EvilSquid : MonoBehaviour
     public Transform player;
     private Rigidbody rb;
 
+    private bool readyToMove = true;
+
     private void Start()
     {
         StartCoroutine(Move());
@@ -18,6 +20,15 @@ public class EvilSquid : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(2f, 4f));
+            readyToMove = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (readyToMove)
+        {
+            readyToMove = false;
             transform.rotation = Quaternion.LookRotation(player.position - transform.position);
             rb.AddForce(transform.forward * 200f, ForceMode.Impulse);
         }
@@ -27,7 +38,7 @@ public class EvilSquid : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            collision.transform.GetComponent<FishHealth>().Damage(10);
+            collision.transform.GetComponent<FishHealth>().Damage(5);
         }
     }
 }

@@ -17,8 +17,19 @@ public class FinalBullet : MonoBehaviour
     {
         if (collider.transform.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            SquidHealth possibleSquidHealth;
+            if (collider.transform.TryGetComponent(out possibleSquidHealth))
+            {
+                possibleSquidHealth.Damage(20);
+            }
+            JellyfishHealth possibleJellyfishHealth;
+            if (collider.transform.TryGetComponent(out possibleJellyfishHealth))
+            {
+                possibleJellyfishHealth.Damage(20);
+            }
+
             Instantiate(explosionFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
