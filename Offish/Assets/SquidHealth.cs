@@ -27,10 +27,12 @@ public class SquidHealth : MonoBehaviour
 
         if (health == 0)
         {
-            cyborg.KilledSquid();
+            cyborg.KilledEnemy();
+            print("destroying");
             transform.GetComponent<EvilSquid>().enabled = false;
             transform.GetComponent<Rigidbody>().useGravity = true;
             enabled = false;
+            Destroy(gameObject);
         }
     }
 }

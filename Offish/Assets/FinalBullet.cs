@@ -25,7 +25,7 @@ public class FinalBullet : MonoBehaviour
             JellyfishHealth possibleJellyfishHealth;
             if (collider.transform.TryGetComponent(out possibleJellyfishHealth))
             {
-                possibleJellyfishHealth.Damage(20);
+                possibleJellyfishHealth.Damage(10);
             }
 
             Instantiate(explosionFX, transform.position, Quaternion.identity);

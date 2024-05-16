@@ -7,12 +7,7 @@ public class FinalBulletExplosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.GetComponent<ParticleSystem>().Emit(Random.Range(50, 65));
-        StartCoroutine(Kill());
-    }
-
-    private IEnumerator Kill()
-    {
-        yield return new WaitForSeconds(1.5f);
+        transform.GetComponent<ParticleSystem>().Emit(Random.Range(40, 55));
+        Destroy(gameObject, 2f);
     }
 }

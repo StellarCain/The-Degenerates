@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 public class Cyborg : MonoBehaviour
 {
@@ -11,13 +12,16 @@ public class Cyborg : MonoBehaviour
     public PostProcessVolume _postProcessVolume;
     public List<Transform> evilSquids = new List<Transform>();
     public List<Transform> jellyfish = new List<Transform>();
+    public List<Transform> finalEnemies = new List<Transform>();
+    public Slider bossHealthSlider;
+    private float bossHealth = 100;
 
     private float shootRate = 3f;
     private ColorGrading _cg;
     private int phase = 0;
 
-    //PHASE 1
-    private int downedSquid = 0;
+    //ALL PHASES 0, 1 ,2
+    private int downedEnemies = 0;
 
     //PHASE 2
     private bool startedPhase = false;
@@ -41,26 +45,31 @@ public class Cyborg : MonoBehaviour
 
         for (float i = 0; i < 1; i += Time.deltaTime)
         {
-            print("original");
             yield return new WaitForEndOfFrame();
             _cg.temperature.Override(Mathf.Lerp(originalTemp, -34f, i));
         }
     }
 
     // PHASE 1
-    public void KilledSquid()
+    public void KilledEnemy()
     {
-        downedSquid++;
+        downedEnemies++;
 
-        if (downedSquid == 4)
+        bossHealth -= 100f / 15f;
+
+        if (downedEnemies == 4)
         {
             phase++;
             StartPhase1();
+        }
+        else if (downedEnemies == 7)
+        {
+            phase++;
+            StartPhase2();
 
-            //making them slowly sink down
-            foreach (Transform t in evilSquids)
+            foreach (Transform t in jellyfish)
             {
-                t.GetComponent<Rigidbody>().velocity = Vector3.down * 2f;
+                Destroy(t.gameObject, 2f);
             }
         }
     }
@@ -73,4 +82,13 @@ public class Cyborg : MonoBehaviour
             t.gameObject.SetActive(true);
         }
     }
+
+    private void StartPhase2()
+    {
+        foreach (Transform t in finalEnemies)
+        {
+            t.gameObject.SetActive(true);
+        }
+    }
 }
+
