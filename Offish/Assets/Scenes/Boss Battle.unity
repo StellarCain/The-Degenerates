@@ -21212,8 +21212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcd361503167464c817cdd8f22234fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 160
-  acceleration: 10
+  maxSpeed: 150
+  acceleration: 4
   velocityLerpSpeed: 3
   decceleration: 5
   mouseLerpSpeed: 10
