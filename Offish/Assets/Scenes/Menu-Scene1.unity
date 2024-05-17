@@ -289,6 +289,7 @@ MonoBehaviour:
   timeBetweenLine: 2
   messages:
   - 1980
+  - Find food
 --- !u!4 &253315816
 Transform:
   m_ObjectHideFlags: 0
@@ -552,6 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7147f6d66ac5709428798252c7caaebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: Scene1
 --- !u!4 &1662446135
 Transform:
   m_ObjectHideFlags: 0

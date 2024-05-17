@@ -15,7 +15,7 @@ public class Start2 : MonoBehaviour
 
     private IEnumerator OpenScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(sceneName);
     }
 }

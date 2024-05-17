@@ -21,6 +21,6 @@ public class sceneChange : MonoBehaviour
         explosion.Emit(100);
         player.GetComponent<FishHealth>().Kill();
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Boss Battle");
+        SceneManager.LoadScene("Scene2-Boss Battle");
     }
 }
