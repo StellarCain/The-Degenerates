@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Start2 : MonoBehaviour
 {
+    public string sceneName = "Scene1";
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,6 @@ public class Start2 : MonoBehaviour
     private IEnumerator OpenScene()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene(sceneName);
     }
 }

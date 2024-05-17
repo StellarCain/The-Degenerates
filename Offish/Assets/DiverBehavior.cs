@@ -6,6 +6,8 @@ public class DiverBehavior : MonoBehaviour
 {
     public float speed = 50f;
     public float dashDistance = 20f;
+    public int damage = 100;
+    public bool isAnimatedDiver = false;
     private Transform target;
     private Rigidbody rb;
     private bool isDashing = false;
@@ -58,7 +60,12 @@ public class DiverBehavior : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player") && isDashing)
         {
-            collision.collider.GetComponent<FishHealth>().Damage(10);
+            collision.collider.GetComponent<FishHealth>().Damage(damage);
+
+            if (isAnimatedDiver)
+            {
+                FindObjectOfType<Scene1To2>().ExecuteScene1End();
+            }
         }
     }
 }
