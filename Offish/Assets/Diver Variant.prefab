@@ -136,4 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  dashDistance: 20
+  dashDistance: 50
+  damage: 5
+  isAnimatedDiver: 0
