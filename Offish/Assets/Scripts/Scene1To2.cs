@@ -10,7 +10,7 @@ public class Scene1To2 : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Boss Battle");
+            SceneManager.LoadScene("Level2");
         }
     }
 }
