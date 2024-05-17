@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &571645369
+--- !u!1 &1042872936
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 571645370}
-  - component: {fileID: 571645371}
+  - component: {fileID: 1042872937}
+  - component: {fileID: 1042872938}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Shark (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &571645370
+--- !u!4 &1042872937
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571645369}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_GameObject: {fileID: 1042872936}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.69066, y: -0.69066, z: 0.69066}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1864582418228071327}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
---- !u!212 &571645371
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!212 &1042872938
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571645369}
+  m_GameObject: {fileID: 1042872936}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2dd30785c56dade4693862c87a8d6f8d, type: 3}
-  m_Color: {r: 0.59278214, g: 0.603029, b: 0.7264151, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8ad4e85975e2e0f428e2bcf4b3488159, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.95, y: 3.76}
+  m_Size: {x: 7.92, y: 4.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -110,12 +110,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143971782}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.11, z: -3.064}
+  m_LocalPosition: {x: 0, y: -0.11, z: -2.521}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1864582418228071327}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!198 &1143971785
 ParticleSystem:
@@ -4908,7 +4908,7 @@ GameObject:
   - component: {fileID: 255360125}
   - component: {fileID: 3210127271597580785}
   - component: {fileID: 6043119650292162479}
-  - component: {fileID: 1318651722}
+  - component: {fileID: 999217414}
   m_Layer: 0
   m_Name: Shark
   m_TagString: Enemy
@@ -4925,11 +4925,11 @@ Transform:
   m_GameObject: {fileID: 1864582418228071315}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 547.69, y: 72.11, z: -148.86}
-  m_LocalScale: {x: 7.97325, y: -7.97325, z: 7.97325}
+  m_LocalScale: {x: 7.97325, y: 7.97325, z: 7.97325}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 571645370}
   - {fileID: 1143971783}
+  - {fileID: 1042872937}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -5058,7 +5058,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1318651722
+--- !u!114 &999217414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5067,7 +5067,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1864582418228071315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9071cb8d0bb2c7b4a824d4615e930c86, type: 3}
+  m_Script: {fileID: 11500000, guid: c668d94d8adad0943a883d03440ffa23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 140
+  chaseShark: 0
