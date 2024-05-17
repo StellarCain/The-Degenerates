@@ -21,6 +21,8 @@ public class Scene1To2 : MonoBehaviour
             diverInstance.GetComponent<DiverBehavior>().damage = 100;
             diverInstance.GetComponent<DiverBehavior>().dashDistance = 30f;
             diverInstance.GetComponent<DiverBehavior>().isAnimatedDiver = true;
+
+            print("instance");
         }
     }
 

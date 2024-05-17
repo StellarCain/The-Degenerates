@@ -10,7 +10,7 @@ public class ZoomCamera : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            Camera.main.transform.position -= Vector3.forward * 20f;
+            Camera.main.GetComponent<FishCamera>().zOriginal -= 30f;
         }
     }
 }

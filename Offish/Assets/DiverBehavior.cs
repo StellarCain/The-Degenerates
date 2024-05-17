@@ -6,7 +6,7 @@ public class DiverBehavior : MonoBehaviour
 {
     public float speed = 50f;
     public float dashDistance = 20f;
-    public int damage = 100;
+    public int damage = 5;
     public bool isAnimatedDiver = false;
     private Transform target;
     private Rigidbody rb;

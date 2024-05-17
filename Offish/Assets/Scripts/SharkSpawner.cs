@@ -33,6 +33,12 @@ public class SharkSpawner : MonoBehaviour
     private IEnumerator Behavior()
     {
         started = true;
+
+        if (chase)
+        {
+            transform.GetComponent<AudioSource>().Play();
+        }
+
         yield return new WaitForSeconds(delay);
         for (float i = 0; i <= 1; i += (1 / frames))
         {
@@ -41,13 +47,13 @@ public class SharkSpawner : MonoBehaviour
 
             if (Vector3.Distance(player.position, new Vector3(transform.position.x, transform.position.y, player.position.z)) > detectionRange * 1.5f)
             {
-                UnityEngine.GameObject sharkInstance = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z + 20), Quaternion.Euler(0, -90, 0), transform);
+                GameObject sharkInstance = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z + 20), Quaternion.Euler(0, -90, 0), transform);
                 sharkInstance.GetComponent<SharkBehavior>().speed = sharkSpeed;
                 yield break;
             }
         }
 
-        UnityEngine.GameObject sharke = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0), transform);
+        GameObject sharke = Instantiate(shark, new Vector3(transform.position.x, transform.position.y, player.transform.position.z), Quaternion.Euler(0, -90, 0), transform);
         sharke.GetComponent<SharkBehavior>().speed = sharkSpeed;
         sharke.GetComponent<SharkBehavior>().chaseShark = chase;
     }
