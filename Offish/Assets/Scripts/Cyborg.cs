@@ -10,9 +10,12 @@ public class Cyborg : MonoBehaviour
     public GameObject cyborgBullet;
     public float cyborgBulletVelocity = 1f;
     public PostProcessVolume _postProcessVolume;
-    public List<Transform> evilSquids = new List<Transform>();
+    public List<Transform> evilSquid = new List<Transform>();
     public List<Transform> jellyfish = new List<Transform>();
+    public List<Transform> combinedEnemies = new List<Transform>();
+    public Transform superJelly;
     public List<Transform> finalEnemies = new List<Transform>();
+    public List<Transform> finalFinalEnemies = new List<Transform>();
     public Slider bossHealthSlider;
     private float bossHealth = 100;
 
@@ -33,10 +36,16 @@ public class Cyborg : MonoBehaviour
         Camera.main.GetComponent<FishCamera>().zOriginal = -350.7f;
         StartCoroutine(ChangeTemperature());
 
-        foreach (Transform t in evilSquids)
+        bossHealthSlider.transform.gameObject.SetActive(true);
+
+        print("activating boss");
+
+        foreach (Transform t in evilSquid)
         {
             t.gameObject.SetActive(true);
         }
+
+        player.GetComponent<FinalGun>().enabled = true;
     }
 
     private IEnumerator ChangeTemperature()
@@ -55,37 +64,74 @@ public class Cyborg : MonoBehaviour
     {
         downedEnemies++;
 
-        bossHealth -= 100f / 15f;
+        bossHealth -= 100f / 33f;
+        bossHealthSlider.value = bossHealth / 100f;
 
         if (downedEnemies == 4)
         {
             phase++;
-            StartPhase1();
+            StartCoroutine(StartPhase1());
         }
         else if (downedEnemies == 7)
         {
             phase++;
-            StartPhase2();
-
-            foreach (Transform t in jellyfish)
-            {
-                Destroy(t.gameObject, 2f);
-            }
+            StartCoroutine(StartPhase2());
+        }
+        else if (downedEnemies == 13)
+        {
+            phase++;
+            StartCoroutine(StartPhase3());
+        }
+        else if (downedEnemies == 14)
+        {
+            phase++;
+            StartCoroutine(StartPhase4());
+        }
+        else if (downedEnemies == 23)
+        {
+            phase++;
+            StartCoroutine(StartPhase5());
         }
     }
 
     //SPAWN IN THA JELLYFISH
-    private void StartPhase1()
+    private IEnumerator StartPhase1()
     {
+        yield return new WaitForSeconds(2);
         foreach (Transform t in jellyfish)
         {
             t.gameObject.SetActive(true);
         }
     }
 
-    private void StartPhase2()
+    private IEnumerator StartPhase2()
     {
+        yield return new WaitForSeconds(2);
+        foreach (Transform t in combinedEnemies)
+        {
+            t.gameObject.SetActive(true);
+        }
+    }
+
+    private IEnumerator StartPhase3()
+    {
+        yield return new WaitForSeconds(2);
+        superJelly.gameObject.SetActive(true);
+    }
+
+    private IEnumerator StartPhase4()
+    {
+        yield return new WaitForSeconds(2);
         foreach (Transform t in finalEnemies)
+        {
+            t.gameObject.SetActive(true);
+        }
+    }
+
+    private IEnumerator StartPhase5()
+    {
+        yield return new WaitForSeconds(2);
+        foreach (Transform t in finalFinalEnemies)
         {
             t.gameObject.SetActive(true);
         }

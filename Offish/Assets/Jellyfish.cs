@@ -6,11 +6,16 @@ public class Jellyfish : MonoBehaviour
 {
     public GameObject jellyfishBullets;
     public int numberOfProjectiles;
+    public bool randomizeNumber = false;
+    public float rate = 4f;
     public float bulletSpeed = 1;
     private bool canShoot = true;
 
+    private int trueNumberOfProjectiles;
+
     private void Start()
     {
+        trueNumberOfProjectiles = numberOfProjectiles;
         StartCoroutine(Cycle());
     }
     // Update is called once per frame
@@ -20,16 +25,21 @@ public class Jellyfish : MonoBehaviour
         {
             canShoot = false;
 
-            float angleStep = 360f / numberOfProjectiles;
+            if (randomizeNumber)
+            {
+                trueNumberOfProjectiles = numberOfProjectiles + Random.Range(-20, 20);
+            }
+
+            float angleStep = 360f / trueNumberOfProjectiles;
             float angle = 0f;
 
             // shoots bullets in a wide radius
-            for (int i = 0; i < numberOfProjectiles; i++)
+            for (int i = 0; i < trueNumberOfProjectiles; i++)
             {
 
                 // Direction calculations
-                float projectileDirXposition = 3f * Mathf.Cos(angle * Mathf.Deg2Rad);
-                float projectileDirYposition = 3f * Mathf.Sin(angle * Mathf.Deg2Rad);
+                float projectileDirXposition = 3f * Mathf.Cos((angle + Time.deltaTime * 100f) * Mathf.Deg2Rad);
+                float projectileDirYposition = 3f * Mathf.Sin((angle + Time.deltaTime * 100f) * Mathf.Deg2Rad);
 
                 angle += angleStep;
                 GameObject bulletInstance = Instantiate(jellyfishBullets, transform.position, Quaternion.identity);
@@ -47,7 +57,7 @@ public class Jellyfish : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(rate);
             canShoot = true;
         }
     }

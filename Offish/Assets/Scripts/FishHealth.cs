@@ -34,7 +34,6 @@ public class FishHealth : MonoBehaviour
         health -= damage;
         for (float i = 0; i <= .98f; i += Time.deltaTime * 2f)
         {
-
             yield return new WaitForEndOfFrame();
             _cg.gamma.Override(Vector4.Lerp(new Vector4(2f, 0f, 0f, -1f), currentGammaValue, i));
         }
@@ -54,6 +53,12 @@ public class FishHealth : MonoBehaviour
     {
         if (!dying)
             StartCoroutine(ExecuteDeath());
+    }
+
+    public void Heal()
+    {
+        health = 100f;
+        _cg.gamma.Override(originalGammaValue);
     }
 
     private IEnumerator ExecuteDeath()
