@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571645369}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: -1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1864582418228071327}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!212 &571645371
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ad4e85975e2e0f428e2bcf4b3488159, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2dd30785c56dade4693862c87a8d6f8d, type: 3}
   m_Color: {r: 0.59278214, g: 0.603029, b: 0.7264151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4905,10 +4905,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1864582418228071327}
-  - component: {fileID: 1864582418228071326}
   - component: {fileID: 255360125}
   - component: {fileID: 3210127271597580785}
   - component: {fileID: 6043119650292162479}
+  - component: {fileID: 1318651722}
   m_Layer: 0
   m_Name: Shark
   m_TagString: Enemy
@@ -4925,7 +4925,7 @@ Transform:
   m_GameObject: {fileID: 1864582418228071315}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 547.69, y: 72.11, z: -148.86}
-  m_LocalScale: {x: 7.97325, y: 7.97325, z: 7.97325}
+  m_LocalScale: {x: 7.97325, y: -7.97325, z: 7.97325}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 571645370}
@@ -4933,20 +4933,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &1864582418228071326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864582418228071315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c668d94d8adad0943a883d03440ffa23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 150
-  chaseShark: 0
 --- !u!54 &255360125
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4960,7 +4946,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &3210127271597580785
@@ -4974,8 +4960,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.1896518
+  m_Center: {x: 5.601111e-16, y: 0.2504455, z: 0.463814}
 --- !u!82 &6043119650292162479
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5072,3 +5058,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1318651722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864582418228071315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9071cb8d0bb2c7b4a824d4615e930c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100

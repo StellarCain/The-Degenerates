@@ -19,6 +19,7 @@ public class BlasterCode : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = bulletSpawnPoint.position.z - Camera.main.transform.position.z;
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            mousePosition.z = transform.position.z;
             Vector3 direction = (mousePosition - bullet.transform.position).normalized;
             bullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
             bullet.transform.forward = direction;
