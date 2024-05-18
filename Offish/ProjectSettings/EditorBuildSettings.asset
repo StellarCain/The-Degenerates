@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 1b20f1665685b2a438c020944577ecdc
+  - enabled: 1
+    path: Assets/Scenes/SaveToLeaderboard.unity
+    guid: 00af3a8c84c757549b8e7b59972d1c8e
   m_configObjects: {}

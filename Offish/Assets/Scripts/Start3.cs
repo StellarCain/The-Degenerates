@@ -16,6 +16,9 @@ public class Start3 : MonoBehaviour
     private IEnumerator OpenScene()
     {
         yield return new WaitForSeconds(38f);
+
+
+
         SceneManager.LoadScene(sceneName);
     }
 }
