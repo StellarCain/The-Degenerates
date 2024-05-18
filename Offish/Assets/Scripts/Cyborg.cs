@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Cyborg : MonoBehaviour
@@ -19,6 +21,7 @@ public class Cyborg : MonoBehaviour
     public List<Transform> finalFinalEnemies = new List<Transform>();
     public Slider bossHealthSlider;
     private float bossHealth = 100;
+    public ParticleSystem explosion;
 
     private float shootRate = 3f;
     private ColorGrading _cg;
@@ -95,6 +98,11 @@ public class Cyborg : MonoBehaviour
             phase++;
             StartCoroutine(StartPhase5());
         }
+        else if (downedEnemies == 33)
+        {
+            phase++;
+            StartCoroutine(StartPhase6());
+        }
     }
 
     //SPAWN IN THA JELLYFISH
@@ -138,6 +146,18 @@ public class Cyborg : MonoBehaviour
         {
             t.gameObject.SetActive(true);
         }
+    }
+
+    private IEnumerator StartPhase6()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(1);
+            explosion.Emit(100);
+        }
+        player.GetComponent<FishHealth>().Kill();
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Limbo");
     }
 }
 

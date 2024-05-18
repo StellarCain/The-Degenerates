@@ -9,21 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 6998ca86dc6d0224d93e5f7498be7075
   - enabled: 1
-    path: Assets/Scenes/Boss Battle.unity
-    guid: e53a0a14e19340b4886a378c04695da2
+    path: Assets/Scenes/Menu-Scene1.unity
+    guid: e0836d491af89bd48be4fe4242c9a7a2
   - enabled: 1
     path: Assets/Scenes/Scene1.unity
     guid: a90315f2caf3505449eed0ad8aa112a6
   - enabled: 1
-    path: Assets/Scenes/Menu-Scene1.unity
-    guid: e0836d491af89bd48be4fe4242c9a7a2
+    path: Assets/Scenes/Scene1-Scene2.unity
+    guid: 6c3551c0158e5aa47a7cee7f6f073975
   - enabled: 1
     path: Assets/Scenes/Scene2.unity
     guid: 502920d3c36ae814996797c4b6ac9fe4
   - enabled: 1
-    path: Assets/Scenes/Scene1-Scene2.unity
-    guid: 6c3551c0158e5aa47a7cee7f6f073975
-  - enabled: 1
     path: Assets/Scenes/Scene2-Boss Battle.unity
     guid: e312c73f4bb01ca439fa37c5f587b0d2
+  - enabled: 1
+    path: Assets/Scenes/Boss Battle.unity
+    guid: e53a0a14e19340b4886a378c04695da2
+  - enabled: 1
+    path: Assets/Scenes/Limbo.unity
+    guid: c0cec17bfc6f3c348b04182439f894c8
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 1b20f1665685b2a438c020944577ecdc
   m_configObjects: {}
