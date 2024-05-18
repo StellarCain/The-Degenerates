@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Cyborg : MonoBehaviour
 {
     public Transform player;
+    public AudioSource bossMusic;
     public GameObject cyborgBullet;
     public float cyborgBulletVelocity = 1f;
     public PostProcessVolume _postProcessVolume;
@@ -46,6 +47,8 @@ public class Cyborg : MonoBehaviour
         }
 
         player.GetComponent<FinalGun>().enabled = true;
+        bossMusic.Play();
+
     }
 
     private IEnumerator ChangeTemperature()

@@ -9,6 +9,7 @@ public class BlasterCode : MonoBehaviour
     public UnityEngine.GameObject bulletPrefab;
     public float bulletSpeed = 10;
     public ParticleSystem muzzleFlash;
+    public AudioSource blasterSound;
 
     // Update is called once per frame
     void Update()
@@ -24,6 +25,9 @@ public class BlasterCode : MonoBehaviour
             bullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
             bullet.transform.forward = direction;
             muzzleFlash.Emit(30);
+
+            blasterSound.pitch = Random.Range(1f, 3f);
+            blasterSound.Play();
         }
     }
 }
